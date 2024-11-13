@@ -1,0 +1,58 @@
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #262626;
+  width: 15%;
+  height: 100vh;
+  gap: 3rem;
+}
+
+.navUserMenu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+.userAvatar {
+  border-radius: 10rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.addTaskContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 2.5rem;
+  gap: 1rem;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 3rem;
+  gap: 1rem;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navAddTaskButton {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  font-size: larger;
+  gap: 1rem;
+}
