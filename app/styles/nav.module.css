@@ -1,0 +1,170 @@
+.navContainer {
+  display: flex;
+  align-items: center;
+  background-color: #262626;
+  height: 10vh;
+}
+
+@media (min-width: 786px) {
+  .navContainer {
+    flex-direction: column;
+    width: 15%;
+    gap: 3rem;
+    height: 100vh;
+  }
+}
+
+.navUserMenu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+}
+
+@media (min-width: 786px) {
+}
+
+.userAvatar {
+  border-radius: 10rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+@media (min-width: 786px) {
+  .userAvatar {
+    border-radius: 10rem;
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+.addTaskContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@media (min-width: 786px) {
+  .addTaskContainer {
+    width: 100%;
+  }
+}
+
+.navAddTaskButton {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  color: white;
+  font-size: larger;
+  gap: 2.5rem;
+  margin-left: 1.3rem;
+}
+
+@media (min-width: 786px) {
+  .navAddTaskButton {
+    margin-left: 1.5rem;
+  }
+}
+
+.navItems {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  background-color: #222222;
+  position: absolute;
+  top: 8rem;
+  left: 0;
+  width: 100%;
+  gap: 1rem;
+  z-index: 1;
+}
+
+@media (min-width: 786px) {
+  .navItems {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    position: relative;
+    top: 0;
+    background-color: #262626;
+  }
+}
+
+.navItems.open {
+  display: flex;
+}
+
+.navItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5rem;
+  padding-bottom: 1rem;
+  margin-left: 2rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navItem:hover,
+.addTaskContainer:hover {
+  color: white;
+  background-color: #322f2a;
+}
+
+@media (min-width: 786px) {
+  .navItem {
+    width: 100%;
+    padding: 1rem 2rem;
+    color: white;
+    text-decoration: none;
+    margin-left: 0;
+    cursor: pointer;
+  }
+}
+
+.menuIcon {
+  height: 5rem;
+  width: 3rem;
+}
+
+.hamburgerMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  margin-left: 3rem;
+}
+
+.hamburgerBar {
+  width: 100%;
+  height: 3px;
+  background-color: whitesmoke;
+  transition: all 0.3s ease;
+}
+
+.hamburgerMenu.active .hamburgerBar:nth-child(1) {
+  transform: rotate(90deg) translate(6px, -6px);
+}
+
+.hamburgerMenu.active .hamburgerBar:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.hamburgerMenu.active .hamburgerBar:nth-child(3) {
+  transform: rotate(90deg) translate(6px, 6px);
+}
+
+@media (min-width: 768px) {
+  .hamburgerMenu {
+    display: none;
+  }
+}
