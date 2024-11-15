@@ -9,7 +9,8 @@ export default function Home() {
       <div className={styles.taskItemContainer}>
         <li className={styles.taskItem}>
           <div className={styles.checkboxContainer}>
-            <input type='checkbox' />
+            <input type='checkbox' id='task1' className={styles.checkbox} />
+            <label htmlFor='task1' className={styles.customCheckbox}></label>
           </div>
           <div className={styles.taskInfo}>
             <h3>This a mocking title</h3>
