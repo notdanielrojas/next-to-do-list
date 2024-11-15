@@ -1,0 +1,12 @@
+.layoutContainer {
+  display: flex;
+  height: 100vh;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 6rem;
+}

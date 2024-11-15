@@ -1,3 +1,24 @@
+import styles from "./styles/today.module.css";
+
 export default function Home() {
-  return <></>;
+  return (
+    <section className={styles.todaySection}>
+      <div className={styles.titleContainer}>
+        <h2 className={styles.title}>Today</h2>
+      </div>
+      <div className={styles.taskItemContainer}>
+        <li className={styles.taskItem}>
+          <div className={styles.checkboxContainer}>
+            <input type='checkbox' />
+          </div>
+          <div className={styles.taskInfo}>
+            <h3>This a mocking title</h3>
+            <p>This is a mocking description</p>
+            <span className={styles.spamDate}>this is a mocking date</span>
+          </div>
+        </li>
+        <hr className={styles.divider} />
+      </div>
+    </section>
+  );
 }
