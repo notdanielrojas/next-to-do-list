@@ -3,11 +3,9 @@
 }
 
 .titleContainer {
-
 }
 
 .title {
-
 }
 
 .taskItemContainer {
@@ -78,5 +76,29 @@
 }
 
 .spamDate {
-    color: orangered;
+  color: orangered;
+}
+
+.editIconContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 60%;
+}
+
+.editIcon {
+  display: none;
+  cursor: pointer;
+  font-size: 3rem;
+  color: #888;
+  position: relative;
+  right: 20;
+  transition: color 0.3s;
+}
+
+.taskItem:hover .editIcon {
+  display: inline;
+}
+
+.editIcon:hover {
+  color: #555;
 }

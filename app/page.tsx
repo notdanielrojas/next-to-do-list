@@ -1,4 +1,5 @@
 import styles from "./styles/today.module.css";
+import { FaRegEdit } from "react-icons/fa";
 
 export default function Home() {
   return (
@@ -16,6 +17,11 @@ export default function Home() {
             <h3>This a mocking title</h3>
             <p>This is a mocking description</p>
             <span className={styles.spamDate}>this is a mocking date</span>
+          </div>
+          <div className={styles.editIconContainer}>
+            <span className={styles.editIcon}>
+              <FaRegEdit />
+            </span>
           </div>
         </li>
         <hr className={styles.divider} />
