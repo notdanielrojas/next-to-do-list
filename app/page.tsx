@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import styles from "./styles/page.module.css";
-import { FaRegEdit } from "react-icons/fa";
 import { useUser } from "../context/UserContext";
+import TaskItem from "./components/TaskItem";
+import Pagination from "./components/Pagination";
+import styles from "./styles/page.module.css"
 
 interface Task {
   id: number;
@@ -15,7 +16,7 @@ interface Task {
 
 const ITEMS_PER_PAGE = 10;
 
-export default function Today() {
+export default function Home() {
   const { user } = useUser();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -77,41 +78,10 @@ export default function Today() {
             {currentTasks.length === 0 ? (
               <div>No tasks found.</div>
             ) : (
-              currentTasks.map((task) => (
-                <li key={task.id} className={styles.taskItem}>
-                  <div className={styles.checkboxContainer}>
-                    <input type='checkbox' id={`task-${task.id}`} className={styles.checkbox} />
-                    <label htmlFor={`task-${task.id}`} className={styles.customCheckbox}></label>
-                  </div>
-                  <div className={styles.taskInfo}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                    <span className={styles.spamDate}>{new Date(task.date).toLocaleDateString()}</span>
-                  </div>
-                  <div className={styles.editIconContainer}>
-                    <span className={styles.editIcon}>
-                      <FaRegEdit />
-                    </span>
-                  </div>
-                  <hr className={styles.divider} />
-                </li>
-              ))
+              currentTasks.map((task) => <TaskItem key={task.id} task={task} />)
             )}
           </div>
-          <div className={styles.pagination}>
-            <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1}>
-              Previous
-            </button>
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-          </div>
+          <Pagination currentPage={currentPage} totalPages={totalPages} setCurrentPage={setCurrentPage} />
         </>
       )}
     </section>
