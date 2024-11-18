@@ -3,6 +3,7 @@
   align-items: center;
   background-color: #262626;
   height: 10vh;
+  width: 100%;
 }
 
 @media (min-width: 786px) {

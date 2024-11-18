@@ -1,12 +1,26 @@
 .layoutContainer {
   display: flex;
+  flex-direction: column;
   height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .layoutContainer {
+    flex-direction: row;
+  }
 }
 
 .mainContent {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   overflow-y: auto;
   margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    margin-top: 6rem;
+  }
 }
