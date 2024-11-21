@@ -49,7 +49,7 @@
 @media (min-width: 768px) {
   .loginForm {
     padding: 3rem;
-    max-width: 70rem;
+    max-width: 50rem;
     gap: 2.5rem;
   }
 }
