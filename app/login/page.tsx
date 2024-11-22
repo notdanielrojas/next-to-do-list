@@ -6,42 +6,63 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import Swal from "sweetalert2";
 import LoginForm from "../components/LoginForm";
+import API_BASE_URL from "../config/apiConfig";
 
-export default function LogIn() {
+const LogIn = () => {
   const router = useRouter();
   const { setUser } = useUser();
   const [errorMessage, setErrorMessage] = useState("");
+
+  const loginRequest = async (email: string, password: string) => {
+    const response = await fetch(`${API_BASE_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Email or password incorrect");
+    }
+
+    return data;
+  };
+
+  const saveLoginData = (token: string, user: object) => {
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+  };
+
+  const redirectToProfile = (router: any) => {
+    router.push("/profileValid");
+  };
+
+  const showSuccessNotification = (message: string) => {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: message,
+      showConfirmButton: false,
+      timer: 2000,
+    });
+  };
 
   const handleLogin = async (email: string, password: string) => {
     setErrorMessage("");
 
     try {
-      const response = await fetch("https://localhost:3000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const data = await loginRequest(email, password);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Email or password incorrect");
-      }
-
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      saveLoginData(data.token, data.user);
 
       setUser(data.user);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Login Successful!",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-      router.push("/profileValid");
+
+      showSuccessNotification("Login Successful!");
+
+      redirectToProfile(router);
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message);
@@ -57,3 +78,5 @@ export default function LogIn() {
     </div>
   );
 }
+
+export default LogIn;

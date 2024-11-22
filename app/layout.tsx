@@ -3,6 +3,13 @@ import Nav from "@/app/components/Nav";
 import styles from "@/app/styles/layout.module.css";
 import { UserProvider } from "@/context/UserContext";
 import { Poppins } from "next/font/google";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "To do it",
+  description: "Welcome to your task planification app",
+  metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
+};
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>
+      <body className={`${poppins.variable} antialiased`}>
         <UserProvider>
           <div className={styles.layoutContainer}>
             <Nav />

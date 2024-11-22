@@ -9,7 +9,7 @@ interface RegisterFormProps {
   onSubmit: (userData: { name: string; last_name: string; email: string; password: string }) => void;
 }
 
-export default function RegisterForm({ onSubmit }: RegisterFormProps) {
+const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
   const [user, setUser] = useState({
     name: "",
     last_name: "",
@@ -21,6 +21,11 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
     e.preventDefault();
     onSubmit(user);
   };
+
+const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { name, value } = e.target;
+  setUser((prevUser) => ({ ...prevUser, [name]: value }));
+};
 
   return (
     <form onSubmit={handleSubmit} className={styles.registerForm}>
@@ -34,7 +39,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
         minLength={3}
         maxLength={20}
         value={user.name}
-        onChange={(e) => setUser({ ...user, name: e.target.value })}
+        onChange={handleInputChange}
         className={styles.inputForm}
       />
 
@@ -48,7 +53,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
         minLength={3}
         maxLength={20}
         value={user.last_name}
-        onChange={(e) => setUser({ ...user, last_name: e.target.value })}
+        onChange={handleInputChange}
         className={styles.inputForm}
       />
 
@@ -60,7 +65,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
         placeholder='Enter a valid email address'
         required
         value={user.email}
-        onChange={(e) => setUser({ ...user, email: e.target.value })}
+        onChange={handleInputChange}
         className={styles.inputForm}
       />
 
@@ -74,9 +79,10 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
         minLength={5}
         maxLength={20}
         value={user.password}
-        onChange={(e) => setUser({ ...user, password: e.target.value })}
+        onChange={handleInputChange}
         className={styles.inputForm}
       />
+
       <button type='submit' className={styles.registerButton}>
         Sign Up <CiLogin className={styles.signInIcon} />
       </button>
@@ -89,3 +95,5 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
     </form>
   );
 }
+
+export default RegisterForm;

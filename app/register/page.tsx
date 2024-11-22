@@ -1,17 +1,16 @@
-"use client";
-
 import React from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import RegisterForm from "../components/RegisterForm";
 import styles from "../styles/register.module.css";
+import API_BASE_URL from "../config/apiConfig";
 
-export default function Register() {
+const Register = () => {
   const router = useRouter();
 
   const registerUser = async (userData: { name: string; last_name: string; email: string; password: string }) => {
     try {
-      const response = await fetch("https://localhost:3000/users", {
+      const response = await fetch(`${API_BASE_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,3 +53,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default Register;
