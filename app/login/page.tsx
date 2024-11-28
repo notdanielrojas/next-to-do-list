@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import styles from "../styles/login.module.css";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import Swal from "sweetalert2";
 import LoginForm from "../components/LoginForm";
 import API_BASE_URL from "../config/apiConfig";
-import { NextRouter } from "next/router";
 
 const LogIn = () => {
   const router = useRouter();
@@ -37,7 +36,7 @@ const LogIn = () => {
     localStorage.setItem("user", JSON.stringify(user));
   };
 
-  const redirectToProfile = (router: NextRouter) => {
+  const redirectToProfile = () => {
     router.push("/profileValid");
   };
 
@@ -63,7 +62,7 @@ const LogIn = () => {
 
       showSuccessNotification("Login Successful!");
 
-      redirectToProfile(router);
+      redirectToProfile();
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message);

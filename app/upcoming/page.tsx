@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import useFetchTasks from "../hooks/useFetchTasks";
 import TaskItem from "../components/TaskItem";
