@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import API_BASE_URL from "../config/apiConfig";
 import { useUser } from "../../context/UserContext";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  date: number;
-  status: boolean;
-}
+import { Task } from "@/types/types";
 
 export const useFetchTasks = (endpoint: string) => {
   const { user } = useUser();

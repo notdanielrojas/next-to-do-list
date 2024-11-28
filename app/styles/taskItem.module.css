@@ -2,8 +2,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 2rem;
-  margin-left: 1rem;
+  gap: 3rem;
+  margin: 0 0 2rem 1rem;
+  width: 30rem;
+}
+
+@media (min-width: 768px) {
+  .taskItem {
+    width: 50rem;
+  }
 }
 
 .checkboxContainer {
@@ -50,6 +57,7 @@
 .taskInfo {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .divider {
@@ -67,6 +75,7 @@
   display: flex;
   justify-content: flex-end;
   width: 60%;
+  margin-right: 3rem;
 }
 
 .editIcon {

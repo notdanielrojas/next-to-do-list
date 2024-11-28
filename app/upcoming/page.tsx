@@ -1,12 +1,12 @@
-"use client";
-
 import React from "react";
 import { useFetchTasks } from "../hooks/useFetchTasks";
 import TaskItem from "../components/TaskItem";
 import styles from "../styles/page.module.css";
+import { useTasks } from "../hooks/useTasks";
 
 export default function Upcoming() {
-  const { tasks, loading, error } = useFetchTasks("tasks");
+  const { tasks: initialTasks, loading, error } = useFetchTasks("tasks");
+  const { tasks, handleStatusChange } = useTasks(initialTasks);
 
   if (loading) {
     return <div className={styles.loadingStatus}>Loading your tasks...</div>;
@@ -16,7 +16,7 @@ export default function Upcoming() {
     return <div className={styles.errorMessage}>{error}</div>;
   }
 
-  const upcomingTasks = tasks.filter((task) => new Date(task.date).getTime() > Date.now());
+   const upcomingTasks = tasks.filter((task) => new Date(task.date).getTime() > Date.now());
 
   return (
     <section className={styles.taskSection}>
@@ -25,7 +25,7 @@ export default function Upcoming() {
         {upcomingTasks.length === 0 ? (
           <div>No upcoming tasks.</div>
         ) : (
-          upcomingTasks.map((task) => <TaskItem key={task.id} task={task} />)
+          upcomingTasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
         )}
       </div>
     </section>

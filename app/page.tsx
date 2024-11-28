@@ -1,12 +1,12 @@
-"use client";
-
 import React from "react";
 import { useFetchTasks } from "./hooks/useFetchTasks";
 import TaskItem from "./components/TaskItem";
 import styles from "../styles/page.module.css";
+import { useTasks } from "./hooks/useTasks";
 
 export default function Home() {
-  const { tasks, loading, error } = useFetchTasks("tasks");
+  const { tasks: initialTasks, loading, error } = useFetchTasks("tasks");
+  const { tasks, handleStatusChange } = useTasks(initialTasks);
 
   if (loading) {
     return <div className={styles.loadingStatus}>Loading your tasks...</div>;
@@ -23,7 +23,7 @@ export default function Home() {
         {tasks.length === 0 ? (
           <div>No tasks available.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} />)
+          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
         )}
       </div>
     </section>
