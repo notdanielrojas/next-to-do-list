@@ -5,20 +5,18 @@ import { Task } from "@/types/types";
 import { useTasks } from "../hooks/useTasks";
 
 interface TaskListProps {
-  initialTasks: Task[];
+  tasks: Task[];
 }
 
-const TaskList: React.FC<TaskListProps> = ({ initialTasks }) => {
-  const { tasks, handleStatusChange } = useTasks(initialTasks);
+const TaskList: React.FC<TaskListProps> = ({ tasks }) => {
+  const { tasks: handledTasks, handleStatusChange } = useTasks(tasks);
 
   return (
     <div className={styles.taskContainer}>
-      {tasks.length === 0 ? (
+      {handledTasks.length === 0 ? (
         <div>No tasks match your search.</div>
       ) : (
-        tasks.map((task) => (
-          <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />
-        ))
+        handledTasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
       )}
     </div>
   );
