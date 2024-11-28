@@ -10,7 +10,7 @@ interface LoginFormProps {
   errorMessage: string;
 }
 
-export default function LoginForm({ onSubmit, errorMessage }: LoginFormProps) {
+const LoginForm =({ onSubmit, errorMessage }: LoginFormProps) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -62,3 +62,5 @@ export default function LoginForm({ onSubmit, errorMessage }: LoginFormProps) {
     </form>
   );
 }
+
+export default LoginForm;

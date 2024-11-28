@@ -3,10 +3,10 @@
 import React, { useState, useMemo } from "react";
 import SearchForm from "../components/SearchForm";
 import TaskList from "../components/TaskList";
-import { useFetchTasks } from "../hooks/useFetchTasks";
+import useFetchTasks from "../hooks/useFetchTasks";
 import styles from "../styles/search.module.css";
 
-export default function Search() {
+const Search = () => {
   const [searchText, setSearchText] = useState<string>("");
   const { tasks, loading, error } = useFetchTasks("tasks");
 
@@ -38,4 +38,6 @@ export default function Search() {
       </div>
     </section>
   );
-}
+};
+
+export default Search;

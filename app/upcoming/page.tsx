@@ -1,10 +1,10 @@
 import React from "react";
-import { useFetchTasks } from "../hooks/useFetchTasks";
+import useFetchTasks from "../hooks/useFetchTasks";
 import TaskItem from "../components/TaskItem";
 import styles from "../styles/page.module.css";
-import { useTasks } from "../hooks/useTasks";
+import useTasks from "../hooks/useTasks";
 
-export default function Upcoming() {
+const Upcoming = () => {
   const { tasks: initialTasks, loading, error } = useFetchTasks("tasks");
   const { tasks, handleStatusChange } = useTasks(initialTasks);
 
@@ -16,7 +16,7 @@ export default function Upcoming() {
     return <div className={styles.errorMessage}>{error}</div>;
   }
 
-   const upcomingTasks = tasks.filter((task) => new Date(task.date).getTime() > Date.now());
+  const upcomingTasks = tasks.filter((task) => new Date(task.date).getTime() > Date.now());
 
   return (
     <section className={styles.taskSection}>
@@ -30,4 +30,6 @@ export default function Upcoming() {
       </div>
     </section>
   );
-}
+};
+
+export default Upcoming;

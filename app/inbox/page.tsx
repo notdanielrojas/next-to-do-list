@@ -1,10 +1,10 @@
 import React from "react";
-import { useFetchTasks } from "../hooks/useFetchTasks";
-import { useTasks } from "../hooks/useTasks";
+import useFetchTasks from "../hooks/useFetchTasks";
+import useTasks from "../hooks/useTasks";
 import TaskItem from "../components/TaskItem";
 import styles from "../styles/page.module.css";
 
-export default function Inbox() {
+const Inbox = () => {
   const { tasks: initialTasks, loading, error } = useFetchTasks("tasks");
   const { tasks, handleStatusChange } = useTasks(initialTasks);
 
@@ -30,4 +30,6 @@ export default function Inbox() {
       </div>
     </section>
   );
-}
+};
+
+export default Inbox;

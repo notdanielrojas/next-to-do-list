@@ -14,8 +14,13 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | null>(null);
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+interface UserProviderProps {
+  children: ReactNode;
+}
+
+const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -23,6 +28,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const payload = token.split(".")[1];
         const decodedPayload = atob(payload);
         const userInfo = JSON.parse(decodedPayload);
+        
         if (userInfo && userInfo.id && userInfo.email) {
           setUser(userInfo);
         } else {
@@ -38,10 +44,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };
 
-export const useUser = () => {
+const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
     throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };
+
+export { UserProvider, useUser };

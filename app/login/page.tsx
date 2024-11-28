@@ -2,11 +2,12 @@
 
 import React, { useState } from "react";
 import styles from "../styles/login.module.css";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import { useUser } from "@/context/UserContext";
 import Swal from "sweetalert2";
 import LoginForm from "../components/LoginForm";
 import API_BASE_URL from "../config/apiConfig";
+import { NextRouter } from "next/router";
 
 const LogIn = () => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const LogIn = () => {
     localStorage.setItem("user", JSON.stringify(user));
   };
 
-  const redirectToProfile = (router: any) => {
+  const redirectToProfile = (router: NextRouter) => {
     router.push("/profileValid");
   };
 
@@ -77,6 +78,6 @@ const LogIn = () => {
       <LoginForm onSubmit={handleLogin} errorMessage={errorMessage} />
     </div>
   );
-}
+};
 
 export default LogIn;

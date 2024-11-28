@@ -3,7 +3,7 @@ import API_BASE_URL from "../config/apiConfig";
 import { useUser } from "../../context/UserContext";
 import { Task } from "@/types/types";
 
-export const useFetchTasks = (endpoint: string) => {
+const useFetchTasks = (endpoint: string) => {
   const { user } = useUser();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -58,3 +58,5 @@ export const useFetchTasks = (endpoint: string) => {
 
   return { tasks, loading, error };
 };
+
+export default useFetchTasks;

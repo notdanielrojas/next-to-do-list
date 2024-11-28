@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Task } from "@/types/types";
 
-export const useTasks = (initialTasks: Task[]) => {
+const useTasks = (initialTasks: Task[]) => {
   const [tasks, setTasks] = useState(initialTasks);
 
   const handleStatusChange = (taskId: number) => {
@@ -10,3 +10,5 @@ export const useTasks = (initialTasks: Task[]) => {
 
   return { tasks, handleStatusChange };
 };
+
+export default useTasks;
