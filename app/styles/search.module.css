@@ -22,7 +22,7 @@
 .loadingStatus,
 .errorMessage {
   font-size: 1.2rem;
-  color: #888;
+  color: white;
   text-align: center;
 }
 
