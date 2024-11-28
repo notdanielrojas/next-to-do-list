@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { useFetchTasks } from "./hooks/useFetchTasks";
-import TaskItem from "./components/TaskItem";
+import { useFetchTasks } from "../hooks/useFetchTasks";
+import TaskItem from "../components/TaskItem";
 import styles from "../styles/page.module.css";
 
-export default function Home() {
+export default function Upcoming() {
   const { tasks, loading, error } = useFetchTasks("tasks");
 
   if (loading) {
@@ -16,14 +16,16 @@ export default function Home() {
     return <div className={styles.errorMessage}>{error}</div>;
   }
 
+  const upcomingTasks = tasks.filter((task) => new Date(task.date).getTime() > Date.now());
+
   return (
     <section className={styles.taskSection}>
-      <h2>Home</h2>
+      <h2>Upcoming</h2>
       <div className={styles.taskContainer}>
-        {tasks.length === 0 ? (
-          <div>No tasks available.</div>
+        {upcomingTasks.length === 0 ? (
+          <div>No upcoming tasks.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} />)
+          upcomingTasks.map((task) => <TaskItem key={task.id} task={task} />)
         )}
       </div>
     </section>
