@@ -3,14 +3,7 @@
 import React, { useState } from "react";
 import TaskItem from "../components/TaskItem";
 import styles from "../styles/addTask.module.css";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  date: number;
-  status: boolean;
-}
+import { Task } from "@/types/types";
 
 const AddTask: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
