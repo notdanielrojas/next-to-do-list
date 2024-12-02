@@ -5,6 +5,7 @@ import { UserProvider } from "@/context/UserContext";
 import { Poppins } from "next/font/google";
 import { Metadata } from "next";
 
+
 export const metadata: Metadata = {
   title: "To do it",
   description: "Welcome to your task planification app",

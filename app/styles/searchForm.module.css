@@ -1,0 +1,15 @@
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 30rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 786px) {
+  .searchForm {
+    width: 90rem;
+  }
+}

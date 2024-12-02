@@ -1,10 +1,12 @@
-import React from "react";
-import useFetchTasks from "./hooks/useFetchTasks";
-import TaskItem from "./components/TaskItem";
-import styles from "../styles/page.module.css";
-import useTasks from "./hooks/useTasks";
+"use client";
 
-export default function Home() {
+import React from "react";
+import useFetchTasks from "../hooks/useFetchTasks";
+import useTasks from "../hooks/useTasks";
+import TaskItem from "../components/TaskItem";
+import styles from "../styles/page.module.css";
+
+const Inbox = () => {
   const { tasks: initialTasks, loading, error } = useFetchTasks("tasks");
   const { tasks, handleStatusChange } = useTasks(initialTasks);
 
@@ -16,16 +18,20 @@ export default function Home() {
     return <div className={styles.errorMessage}>{error}</div>;
   }
 
+  const pendingTasks = tasks.filter((task) => !task.status);
+
   return (
     <section className={styles.taskSection}>
-      <h2>Home</h2>
+      <h2>Inbox</h2>
       <div className={styles.taskContainer}>
-        {tasks.length === 0 ? (
-          <div>No tasks available.</div>
+        {pendingTasks.length === 0 ? (
+          <div>No pending tasks.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
+          pendingTasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
         )}
       </div>
     </section>
   );
-}
+};
+
+export default Inbox;

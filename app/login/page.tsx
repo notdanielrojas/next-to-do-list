@@ -36,7 +36,7 @@ const LogIn = () => {
     localStorage.setItem("user", JSON.stringify(user));
   };
 
-  const redirectToProfile = (router: any) => {
+  const redirectToProfile = () => {
     router.push("/profileValid");
   };
 
@@ -62,7 +62,7 @@ const LogIn = () => {
 
       showSuccessNotification("Login Successful!");
 
-      redirectToProfile(router);
+      redirectToProfile();
     } catch (error) {
       if (error instanceof Error) {
         setErrorMessage(error.message);
@@ -77,6 +77,6 @@ const LogIn = () => {
       <LoginForm onSubmit={handleLogin} errorMessage={errorMessage} />
     </div>
   );
-}
+};
 
 export default LogIn;
