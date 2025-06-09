@@ -4,12 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import styles from "../styles/register.module.css";
 import { CiLogin } from "react-icons/ci";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
-interface RegisterFormProps {
-  onSubmit: (userData: { name: string; last_name: string; email: string; password: string }) => void;
-}
-
-const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
+const RegisterForm = () => {
+  const router = useRouter();
   const [user, setUser] = useState({
     name: "",
     last_name: "",
@@ -17,9 +16,47 @@ const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
     password: "",
   });
 
+  const registerUser = async (userData: { name: string; last_name: string; email: string; password: string }) => {
+    try {
+      const response = await fetch("https://backendpatagonia-production.up.railway.app/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Error creating user");
+      }
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "User created successfully!",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
+      router.push("/login");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("Error trying to create the user:", error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message,
+        });
+      } else {
+        console.error("An unknown error occurred.");
+      }
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(user);
+    registerUser(user);
   };
 
 const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

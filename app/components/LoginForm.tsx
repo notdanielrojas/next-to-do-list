@@ -5,18 +5,30 @@ import styles from "../styles/login.module.css";
 import { CiLogin } from "react-icons/ci";
 import Link from "next/link";
 
-interface LoginFormProps {
-  onSubmit: (email: string, password: string) => Promise<void>;
-  errorMessage: string;
-}
-
-const LoginForm =({ onSubmit, errorMessage }: LoginFormProps) => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(email, password);
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        setErrorMessage(data.message || "Login failed");
+        return;
+      }
+    } catch {
+      setErrorMessage("Network error");
+    }
   };
 
   return (
@@ -61,6 +73,6 @@ const LoginForm =({ onSubmit, errorMessage }: LoginFormProps) => {
       </p>
     </form>
   );
-}
+};
 
 export default LoginForm;

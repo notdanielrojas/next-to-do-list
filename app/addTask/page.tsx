@@ -1,13 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TaskItem from "../components/TaskItem";
 import styles from "../styles/addTask.module.css";
 import { Task } from "@/types/types";
 
+const TASKS_STORAGE_KEY = "tasks";
+
 const AddTask: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTask, setNewTask] = useState({ title: "", description: "", date: "" });
+  const [newTask, setNewTask] = useState<{ title: string; description: string; date: string }>({ title: "", description: "", date: "" });
+
+  useEffect(() => {
+    const storedTasks = localStorage.getItem(TASKS_STORAGE_KEY);
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(TASKS_STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleAddTask = () => {
     if (!newTask.title || !newTask.date) {
@@ -62,7 +75,7 @@ const AddTask: React.FC = () => {
         {tasks.length === 0 ? (
           <div className={styles.taskMessage}>No tasks available.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
+          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={() => handleStatusChange(task.id)} />)
         )}
       </div>
     </div>

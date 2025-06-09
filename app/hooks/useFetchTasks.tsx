@@ -16,7 +16,7 @@ const useFetchTasks = (endpoint: string) => {
     const fetchTasks = async () => {
       setLoading(true);
       try {
-        const token = localStorage.getItem("authToken");
+        const token = localStorage.getItem("token");
         if (!token) {
           throw new Error("Authentication token is missing");
         }

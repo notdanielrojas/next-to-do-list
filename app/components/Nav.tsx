@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import React from "react";
 import styles from "@/app/styles/nav.module.css";
 import Image from "next/image";
 import { LuInbox } from "react-icons/lu";
@@ -10,7 +9,11 @@ import { IoIosAddCircle } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
 
-const Nav = () => {
+interface NavProps {
+  username: string;
+}
+
+const Nav = ({ username }: NavProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -37,7 +40,7 @@ const Nav = () => {
             quality={10}
             className={styles.userAvatar}
           />
-          <p>Username</p>
+          <p>{username || "Usuario"}</p>
         </div>
         <div className={styles.addTaskContainer}>
           <Link href={"/addTask"}>
