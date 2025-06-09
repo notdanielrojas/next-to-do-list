@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next To-Do List
 
-## Getting Started
+Este proyecto es una aplicación de lista de tareas **full stack** desarrollada con [Next.js](https://nextjs.org), que integra tanto el frontend como el backend en una sola base de código. Permite a los usuarios gestionar sus tareas diarias de manera sencilla y eficiente, con funcionalidades avanzadas como autenticación de usuarios y notificaciones interactivas.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Añadir, editar y eliminar tareas.
+- Marcar tareas como completadas o pendientes.
+- Autenticación de usuarios para proteger y personalizar las tareas.
+- Notificaciones interactivas usando [SweetAlert](https://sweetalert2.github.io/).
+- Interfaz intuitiva y responsiva.
+- Persistencia de datos local o en servidor (según la configuración).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org) para el desarrollo full stack.
+- [React](https://react.dev) para la construcción de la interfaz de usuario.
+- [TypeScript](https://www.typescriptlang.org/) para tipado estático.
+- [Node.js](https://nodejs.org) y [Express](https://expressjs.com) para el backend y la API.
+- [SweetAlert](https://sweetalert2.github.io/) para notificaciones y alertas.
+- [CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support) o [Tailwind CSS](https://tailwindcss.com/) para los estilos (según configuración).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Instalación y uso
 
-## Learn More
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/tu-usuario/next-to-do-list.git
+    cd next-to-do-list
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2. Instala las dependencias:
+    ```bash
+    npm install
+    # o
+    yarn install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Inicia el servidor de desarrollo:
+    ```bash
+    npm run dev
+    # o
+    yarn dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
-## Deploy on Vercel
+## Estructura del proyecto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `app/`: Contiene las páginas y componentes principales.
+- `components/`: Componentes reutilizables de la interfaz.
+- `styles/`: Archivos de estilos.
+- `api/`: Endpoints del backend con Node.js y Express.
+- `README.md`: Documentación del proyecto.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
