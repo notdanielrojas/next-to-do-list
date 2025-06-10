@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import API_BASE_URL from "../config/apiConfig";
 import { useUser } from "../../context/UserContext";

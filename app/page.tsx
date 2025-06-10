@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import useFetchTasks from "./hooks/useFetchTasks";
 import TaskItem from "./components/TaskItem";
@@ -23,7 +25,14 @@ export default function Home() {
         {tasks.length === 0 ? (
           <div>No tasks available.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
+          tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={handleStatusChange}
+              onEdit={() => {}}
+            />
+          ))
         )}
       </div>
     </section>
