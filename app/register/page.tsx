@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
@@ -52,6 +54,6 @@ const Register = () => {
       <RegisterForm onSubmit={registerUser} />
     </div>
   );
-}
+};
 
 export default Register;
