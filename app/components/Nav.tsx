@@ -8,16 +8,12 @@ import { IoCalendarNumberOutline, IoCalendarOutline } from "react-icons/io5";
 import { IoIosAddCircle } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import Link from "next/link";
+import { useUser } from "@/context/UserContext";
 
-interface NavProps {
-  username: string;
-}
-
-const Nav = ({ username }: NavProps) => {
+const Nav = () => {
+  const { user } = useUser();
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
     <div className={styles.navContainer}>
@@ -40,7 +36,7 @@ const Nav = ({ username }: NavProps) => {
             quality={10}
             className={styles.userAvatar}
           />
-          <p>{username || "Usuario"}</p>
+          <p>{user?.email || "Usuario"}</p>
         </div>
         <div className={styles.addTaskContainer}>
           <Link href={"/addTask"}>
