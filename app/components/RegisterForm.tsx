@@ -7,7 +7,11 @@ import { CiLogin } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-const RegisterForm = () => {
+type RegisterFormProps = {
+  onSubmit: (userData: { name: string; last_name: string; email: string; password: string }) => Promise<void>;
+};
+
+const RegisterForm: React.FC<RegisterFormProps> = () => {
   const router = useRouter();
   const [user, setUser] = useState({
     name: "",
@@ -18,7 +22,7 @@ const RegisterForm = () => {
 
   const registerUser = async (userData: { name: string; last_name: string; email: string; password: string }) => {
     try {
-      const response = await fetch("https://backendpatagonia-production.up.railway.app/users", {
+      const response = await fetch("http://localhost:3000/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,10 +63,10 @@ const RegisterForm = () => {
     registerUser(user);
   };
 
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const { name, value } = e.target;
-  setUser((prevUser) => ({ ...prevUser, [name]: value }));
-};
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUser((prevUser) => ({ ...prevUser, [name]: value }));
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.registerForm}>
@@ -131,6 +135,6 @@ const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       </p>
     </form>
   );
-}
+};
 
 export default RegisterForm;
