@@ -16,7 +16,6 @@ Este proyecto es una aplicación de lista de tareas **full stack** desarrollada 
 - [Next.js](https://nextjs.org) para el desarrollo full stack.
 - [React](https://react.dev) para la construcción de la interfaz de usuario.
 - [TypeScript](https://www.typescriptlang.org/) para tipado estático.
-- [Node.js](https://nodejs.org) y [Express](https://expressjs.com) para el backend y la API.
 - [SweetAlert](https://sweetalert2.github.io/) para notificaciones y alertas.
 - [CSS Modules](https://nextjs.org/docs/basic-features/built-in-css-support) o [Tailwind CSS](https://tailwindcss.com/) para los estilos (según configuración).
 
