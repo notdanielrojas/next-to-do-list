@@ -1,0 +1,107 @@
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .loginSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2.5rem;
+  border: 0;
+  border-radius: 1.5rem;
+  width: 80%;
+  max-width: 35rem;
+  background-color: #262626;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loginForm:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+@media (min-width: 768px) {
+  .loginForm {
+    padding: 3rem;
+    max-width: 50rem;
+    gap: 2.5rem;
+  }
+}
+
+.inputForm {
+  padding: 0.5rem 0;
+  width: 90%;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .inputForm {
+    padding: 0.5rem 0;
+    width: 70%;
+  }
+}
+
+.loginForm {
+  padding-left: 0.4rem;
+}
+
+.inputForm {
+  padding-left: 0.4rem;
+}
+
+.inputForm::placeholder {
+  padding-left: 0.1rem;
+}
+
+.loginButton,
+.registerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222222;
+  color: whitesmoke;
+  border-radius: 1rem;
+  padding: 0.5rem 3rem;
+  gap: 0.5rem;
+  text-decoration: underline;
+  transition: transform 0.3s ease;
+}
+
+.loginButton:hover,
+.registerButton:hover {
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .loginButton,
+  .registerButton {
+    padding: 0.5rem 3rem;
+    text-decoration: underline;
+  }
+}
