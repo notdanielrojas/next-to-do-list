@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { FaRegEdit, FaCheck, FaTimes } from "react-icons/fa";
 import styles from "../styles/taskItem.module.css";
