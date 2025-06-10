@@ -9,6 +9,10 @@
 }
 
 @media (min-width: 786px) {
+  .taskItemContainer {
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 
 .taskItem {
