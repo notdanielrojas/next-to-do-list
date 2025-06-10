@@ -3,7 +3,7 @@
 import React from "react";
 import useFetchTasks from "./hooks/useFetchTasks";
 import TaskItem from "./components/TaskItem";
-import styles from "../styles/page.module.css";
+import styles from "./styles/page.module.css";
 import useTasks from "./hooks/useTasks";
 
 export default function Home() {
