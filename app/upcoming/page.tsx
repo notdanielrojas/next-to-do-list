@@ -51,7 +51,12 @@ const Upcoming = () => {
           <div>No upcoming tasks.</div>
         ) : (
           upcomingTasks.map((task) => (
-            <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={handleStatusChange}
+              onEdit={() => {}}
+            />
           ))
         )}
       </div>

@@ -75,7 +75,14 @@ const AddTask: React.FC = () => {
         {tasks.length === 0 ? (
           <div className={styles.taskMessage}>No tasks available.</div>
         ) : (
-          tasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={() => handleStatusChange(task.id)} />)
+          tasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={() => handleStatusChange(task.id)}
+              onEdit={() => {}}
+            />
+          ))
         )}
       </div>
     </div>

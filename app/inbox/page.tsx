@@ -33,7 +33,14 @@ const Inbox = () => {
         {pendingTasks.length === 0 ? (
           <div>No pending tasks.</div>
         ) : (
-          pendingTasks.map((task) => <TaskItem key={task.id} task={task} onStatusChange={handleStatusChange} />)
+          pendingTasks.map((task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              onStatusChange={handleStatusChange}
+              onEdit={() => {}}
+            />
+          ))
         )}
       </div>
     </section>
